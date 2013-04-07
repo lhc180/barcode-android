@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_logout_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_a"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_logout_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo_main" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_logout_3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="20dip"
+       
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/lblMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="10dip"
+            android:text="@string/logout_notice"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/logout_view_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dip"
+            android:text="lblUsername"
+            android:textColor="@color/blue"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_logout_4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_logout"
+            style="@style/white01_button"
+            android:layout_width="266dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:padding="10dp"
+            android:shadowColor="@color/white20"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1.5"
+            android:text="LOGOUT"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/white01_button"
+            android:layout_width="266dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:padding="10dp"
+            android:shadowColor="@color/white20"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1.5"
+            android:text="CANCEL"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

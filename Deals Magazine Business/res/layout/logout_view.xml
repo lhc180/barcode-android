@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_logout_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_a"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_logout_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dip"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo_dark" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_need_help"
+        android:layout_width="80dip"
+        android:layout_height="20dip"
+        android:layout_marginLeft="220dip"
+        android:layout_marginTop="10dip"
+        android:background="#00000000"
+        android:text="need help?"
+        android:textColor="@color/blue110"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="80dip"
+        android:layout_height="1dip"
+        android:layout_marginLeft="220dip"
+        android:background="@color/blue110" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:paddingTop="40dip" >
+
+        <LinearLayout
+            android:id="@+id/ll_logout_3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:background="@color/grey10"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/lblMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:layout_marginTop="10dip"
+                android:text="@string/logout_notice"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/logout_view_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="10dip"
+                android:text="lblUsername"
+                android:textColor="@color/blue"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_redeem_view_1"
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:background="@drawable/bg_grey"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="2.0dip"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:paddingTop="2.0dip" >
+
+        <Button
+            android:id="@+id/btn_logout"
+            style="@style/blue_button"
+            android:layout_width="0.0dip"
+            android:layout_height="40dip"
+            android:layout_weight="1.0"
+            android:text="LOGOUT"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/orange_button"
+            android:layout_width="0.0dip"
+            android:layout_height="40dip"
+            android:layout_marginLeft="5dip"
+            android:layout_weight="1.0"
+            android:text="CANCEL"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

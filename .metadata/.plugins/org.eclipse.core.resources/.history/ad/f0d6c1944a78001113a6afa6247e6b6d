@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_list"
+    android:orientation="horizontal"
+    android:paddingBottom="5dip"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip"
+    android:paddingTop="5dip" >
+
+    <LinearLayout
+        android:id="@+id/widget31"
+        android:layout_width="270dip"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:maxLines="2"
+                android:scrollbars="vertical"
+                android:text="voucher #"
+                android:textColor="@color/grey180"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rowtext_voucher_history_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:maxLines="2"
+                android:scrollbars="vertical"
+                android:text="voucher id"
+                android:textColor="@color/blue100"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:maxLines="2"
+                android:scrollbars="vertical"
+                android:text="Redeemed:"
+                android:textColor="@color/grey180"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rowtext_voucher_history_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:maxLines="2"
+                android:scrollbars="vertical"
+                android:text="voucher date"
+                android:textColor="@color/grey180"
+                android:textSize="16sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="40dip"
+        android:layout_height="60dip"
+        android:background="#00000000"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="20dip"
+            android:src="@drawable/arrow" />
+    </LinearLayout>
+
+</LinearLayout>

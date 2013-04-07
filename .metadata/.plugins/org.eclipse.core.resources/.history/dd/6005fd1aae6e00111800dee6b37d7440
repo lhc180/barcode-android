@@ -1,0 +1,19 @@
+package com.dealsmagazine.seller;
+
+import android.app.TabActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class BusinessesTabView extends TabActivity {
+	
+	private TextView tv_username;
+	
+
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.businesses_tab_view);
+		
+		tv_username = (TextView) this.findViewById(R.id.tv_tab_username);
+		tv_username.setText(((User) getApplication()).loadusernameFrompreferences());
+	}
+}

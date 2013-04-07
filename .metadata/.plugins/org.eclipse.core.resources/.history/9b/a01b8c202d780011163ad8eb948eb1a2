@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_redeem_view_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_main_1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_a"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black10"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/text_mainmenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dip"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:text="Welcome!"
+                    android:textColor="@color/orange50"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_dark" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/ll_main_3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dip"
+            android:orientation="vertical"
+            android:paddingBottom="20dip"
+            android:paddingTop="10dip" >
+
+            <Button
+                android:id="@+id/btn_scanvouchers"
+              
+                android:layout_width="280dip"
+                android:layout_height="58dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1.0"
+                android:shadowColor="@color/white20"
+                android:paddingTop="3dip"
+                android:paddingBottom="3dip"
+                android:paddingLeft="3dip"
+                android:paddingRight="3dip"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:background="@drawable/btn_blue_long"
+                android:shadowRadius="1.5"
+                android:text="REDEEM VOUCHER"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_mybusiness"
+               android:background="@drawable/btn_blue_long"
+                android:layout_width="280dip"
+                android:layout_height="58dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dip"
+                android:layout_weight="1.0"
+                android:shadowColor="@color/white20"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1.5"
+                android:text="MY BUSINESSES"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

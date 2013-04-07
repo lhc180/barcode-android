@@ -1,0 +1,733 @@
+/*
+ * 
+ * © 2011 WhereYouShop.com  All Rights Reserved | http://www.whereyoushop.com 
+ * Emergency 24    | The WhereYouShop Team  
+ *
+ */
+
+package com.whereyoushopbusiness.android;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.DecimalFormat;
+
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.whereyoushopbusiness.android.R;
+import com.whereyoushopbusiness.globals.Globals;
+import com.whereyoushopbusiness.util.ExternalStorageUtils;
+import com.whereyoushopbusiness.util.FileUtils;
+import com.whereyoushopbusiness.util.HtmlUtils;
+import com.whereyoushopbusiness.util.NetworkUtils;
+import com.whereyoushopbusiness.util.VoucherInfoUtils;
+
+public class VoucherInfoView extends Activity {
+
+	final int MENU_LOGOUT = 1;
+	public final static String KEY_VOUCHER_CODE = "VOUCHER_CODE";
+	static private Context appContext;
+
+	private LinearLayout ll_page;
+	private LinearLayout ll_button;
+	private ProgressDialog mypDialog;
+	private AlertDialog.Builder ad_redeem_confirm;
+	private AlertDialog.Builder ad_redeem_result;
+	private Button btn_redeem;
+	private Button btn_voucher_edit;
+	private Button btn_viv_edit_1;
+	private Button btn_viv_edit_2;
+	private Button btn_viv_edit_3;
+	private ImageButton imgbtn_voucher_info_back;
+	private ImageButton imgbtn_voucher_info_refresh;
+	private TextView tv_voucher_code;
+	private TextView tv_voucher_buyer_name;
+	private TextView tv_voucher_status;
+	private TextView tv_date_purchased;
+	private TextView tv_date_redeemed;
+	private TextView tv_date_redeemed_title;
+	private TextView tv_date_expire;
+	private TextView tv_voucher_price;
+	private TextView tv_voucher_value;
+	private TextView tv_option_title;
+	private TextView tv_voucher_business_name;
+	private TextView tv_voucher_note;
+	private TextView tv_voucher_total_spend;
+	private TextView tv_voucher_redeem_address;
+	private TextView tv_voucher_fine_print;
+
+	private byte[] bVoucherData = null;
+
+	private String sBarcode = "";
+	private String sTotalSpend = "";
+	private String sNote = "";
+	private String redeemed_address = "";
+	private int redeemed_address_id = 0;
+
+	DecimalFormat df = new DecimalFormat("###0.00");
+
+	String _nullBarcode = new String("");
+	String _nullVoucherNote = new String("");
+	String _nullTotalSpend = new String("");
+	String _nullRedeemAddress = new String("");
+	String _voucherActive = new String("Active");
+	String _voucherRedeemed = new String("Redeemed");
+	String _nullTime = new String("1900-01-01 00:00:00"); // Empty Time
+	String sRedeemResult = "";
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.voucher_info_view);
+
+		// General Progress Dialog
+		mypDialog = new ProgressDialog(this);
+		mypDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		mypDialog.setTitle(getString(R.string.app_name));
+
+		// Display after onPostExecute
+		ll_page = (LinearLayout) this.findViewById(R.id.ll_voucher_info_view_1);
+		ll_page.setVisibility(View.GONE);
+		ll_button = (LinearLayout) this.findViewById(R.id.ll_button_view_1);
+		ll_button.setVisibility(View.GONE);
+
+		// Initial View & Bundle
+		initialView();
+		initialBundle();
+
+		// BarCode
+		if (sBarcode.equals(_nullBarcode)) {
+			showMessageBox(getString(R.string.error_barcode_null));
+		} else {
+			tv_voucher_code.setText(sBarcode);
+			getVoucher();
+		}
+
+		ad_redeem_confirm = new AlertDialog.Builder(this);
+		ad_redeem_confirm.setTitle("Redeem Confirm");
+		ad_redeem_confirm.setMessage(getString(R.string.redeem_confirm));
+		ad_redeem_confirm.setCancelable(true);
+
+		ad_redeem_confirm.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				redeemVoucher();
+
+			}
+		});
+
+		ad_redeem_confirm.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+
+		ad_redeem_result = new AlertDialog.Builder(this);
+		ad_redeem_result.setTitle("Redeem Result");
+		ad_redeem_result.setCancelable(true);
+
+		ad_redeem_result.setPositiveButton("Redeem Next", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent i = new Intent(VoucherInfoView.this, InputVoucherView.class);
+				startActivityForResult(i, Globals.INPUT_VOUCHER_VIEW);
+				finish();
+			}
+		});
+
+		ad_redeem_result.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent i = new Intent(VoucherInfoView.this, VoucherInfoView.class);
+				i.putExtra(VoucherInfoView.KEY_VOUCHER_CODE, sBarcode);
+				startActivityForResult(i, Globals.VOUCHER_INFO_VIEW);
+				finish();
+			}
+		});
+
+		btn_redeem.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View _v) {
+				ad_redeem_confirm.create().show();
+			}
+		});
+
+		btn_voucher_edit.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View _v) {
+				Intent i = new Intent(VoucherInfoView.this, VoucherEditView.class);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_EDIT_CODE, sBarcode);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_TOTAL_SPEND, sTotalSpend);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_NOTE, sNote);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS, redeemed_address);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS_ID, redeemed_address_id);
+				startActivityForResult(i, Globals.VOUCHER_EDIT_VIEW);
+				finish();
+			}
+		});
+
+		btn_viv_edit_1.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View _v) {
+				Intent i = new Intent(VoucherInfoView.this, VoucherEditView.class);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_EDIT_CODE, sBarcode);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_TOTAL_SPEND, sTotalSpend);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_NOTE, sNote);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS, redeemed_address);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS_ID, redeemed_address_id);
+				startActivityForResult(i, Globals.VOUCHER_EDIT_VIEW);
+				finish();
+			}
+		});
+
+		btn_viv_edit_2.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View _v) {
+				Intent i = new Intent(VoucherInfoView.this, VoucherEditView.class);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_EDIT_CODE, sBarcode);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_TOTAL_SPEND, sTotalSpend);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_NOTE, sNote);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS, redeemed_address);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS_ID, redeemed_address_id);
+				startActivityForResult(i, Globals.VOUCHER_EDIT_VIEW);
+				finish();
+			}
+		});
+
+		btn_viv_edit_3.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View _v) {
+				Intent i = new Intent(VoucherInfoView.this, VoucherEditView.class);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_EDIT_CODE, sBarcode);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_TOTAL_SPEND, sTotalSpend);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_NOTE, sNote);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS, redeemed_address);
+				i.putExtra(VoucherEditView.KEY_VOUCHER_ADDRESS_ID, redeemed_address_id);
+				startActivityForResult(i, Globals.VOUCHER_EDIT_VIEW);
+				finish();
+			}
+		});
+
+		imgbtn_voucher_info_back.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent ia = new Intent(VoucherInfoView.this, InputVoucherView.class);
+				startActivityForResult(ia, Globals.INPUT_VOUCHER_VIEW);
+				finish();
+			}
+		});
+
+		imgbtn_voucher_info_refresh.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(VoucherInfoView.this, VoucherInfoView.class);
+				i.putExtra(VoucherInfoView.KEY_VOUCHER_CODE, sBarcode);
+				startActivityForResult(i, Globals.VOUCHER_INFO_VIEW);
+				finish();
+			}
+		});
+	}
+
+	/*
+	 * Initial View
+	 */
+	private void initialView() {
+
+		// TextView
+		tv_voucher_business_name = (TextView) this.findViewById(R.id.text_voucher_business_name);
+		tv_voucher_code = (TextView) this.findViewById(R.id.text_voucher_code);
+		tv_voucher_status = (TextView) this.findViewById(R.id.text_voucher_status);
+		tv_voucher_buyer_name = (TextView) this.findViewById(R.id.text_voucher_buyer_name);
+		tv_date_purchased = (TextView) this.findViewById(R.id.text_voucher_date_purchased);
+		tv_date_redeemed = (TextView) this.findViewById(R.id.text_voucher_date_redeemed);
+		tv_date_redeemed.setVisibility(View.GONE);
+		tv_date_redeemed_title = (TextView) this.findViewById(R.id.text_voucher_date_redeemed_title);
+		tv_date_redeemed_title.setVisibility(View.GONE);
+		tv_date_expire = (TextView) this.findViewById(R.id.text_voucher_date_expire);
+		tv_voucher_price = (TextView) this.findViewById(R.id.text_voucher_price);
+		tv_voucher_value = (TextView) this.findViewById(R.id.text_voucher_value);
+		tv_option_title = (TextView) this.findViewById(R.id.text_voucher_option);
+		tv_voucher_fine_print = (TextView) this.findViewById(R.id.text_voucher_fine_print);
+		tv_voucher_note = (TextView) this.findViewById(R.id.text_voucher_note);
+		tv_voucher_total_spend = (TextView) this.findViewById(R.id.text_voucher_total_spend);
+		tv_voucher_redeem_address = (TextView) this.findViewById(R.id.text_voucher_redeem_address);
+
+		// Buttons
+		btn_redeem = (Button) this.findViewById(R.id.btn_redeem);
+		btn_voucher_edit = (Button) this.findViewById(R.id.btn_voucher_edit);
+		btn_viv_edit_1 = (Button) this.findViewById(R.id.btn_viv_edit_1);
+		btn_viv_edit_2 = (Button) this.findViewById(R.id.btn_viv_edit_2);
+		btn_viv_edit_3 = (Button) this.findViewById(R.id.btn_viv_edit_3);
+
+		imgbtn_voucher_info_back = (ImageButton) this.findViewById(R.id.imgbtn_voucher_info_back);
+		imgbtn_voucher_info_refresh = (ImageButton) this.findViewById(R.id.imgbtn_voucher_info_refresh);
+
+	}
+
+	/*
+	 * Initial Bundle
+	 */
+	private void initialBundle() {
+
+		// Get BarCode
+		try {
+			Bundle extrasBundle = getIntent().getExtras();
+			sBarcode = extrasBundle.getString(KEY_VOUCHER_CODE);
+		} catch (Exception e) {
+			sBarcode = "";
+		}
+
+	}
+
+	/*
+	 * Read Voucher Data
+	 */
+	public void getVoucher() {
+		new getVoucherInfoViewTask().execute();
+	}
+
+	/*
+	 * Voucher Redeem
+	 */
+	public void redeemVoucher() {
+		new redeemVoucherInfoViewTask().execute();
+	}
+
+	/*
+	 * Get Voucher result
+	 */
+	public boolean isGetVoucherSuccess(byte[] getVoucherResult_byte) {
+
+		boolean boolean_getVoucherResult = false;
+		String jsonResultString = FileUtils.convertByteArrayToString(getVoucherResult_byte);
+		try {
+			final JSONObject json_object_validate = new JSONObject(jsonResultString);
+			boolean_getVoucherResult = json_object_validate.getBoolean("Success");
+			if (boolean_getVoucherResult) {
+
+			} else {
+				String errorMessage = json_object_validate.getString("Message");
+				showMessageBox(errorMessage);
+			}
+		} catch (Exception e) {
+
+		}
+		return boolean_getVoucherResult;
+	}
+
+	/*
+	 * Redeem result
+	 */
+	public boolean isRedeemVoucherSuccess(byte[] getVoucherResult_byte) {
+
+		boolean boolean_getVoucherResult = false;
+		String jsonResultString = FileUtils.convertByteArrayToString(getVoucherResult_byte);
+		try {
+			final JSONObject json_object_validate = new JSONObject(jsonResultString);
+			boolean_getVoucherResult = json_object_validate.getBoolean("Success");
+			if (boolean_getVoucherResult) {
+				String Message = json_object_validate.getString("Message");
+				sRedeemResult = Message;
+
+			} else {
+				String errorMessage = json_object_validate.getString("Message");
+				showMessageBox(errorMessage);
+			}
+		} catch (Exception e) {
+
+		}
+		return boolean_getVoucherResult;
+	}
+
+	/*
+	 * JSON Parser, Voucher Data
+	 */
+	private void refreshVoucherData(String barcode) {
+
+		String fname = barcode;
+		final byte[] buffer;
+		buffer = readInternalStoragePrivate(fname);
+		VoucherInfoUtils.deleteInternalStoragePrivate(this, fname);
+
+		if (buffer != null) {
+			new Thread() {
+				@Override
+				public void run() {
+					try {
+						String voucher_data_string = new String(buffer);
+						final JSONObject json_object_voucher_data = new JSONObject(voucher_data_string);
+						final JSONObject json_object_voucher_data_0 = json_object_voucher_data.getJSONObject("Data");
+
+						final double price = json_object_voucher_data_0.getDouble("Price");
+						final double value = json_object_voucher_data_0.getDouble("Value");
+						final String status = json_object_voucher_data_0.getString("Status");
+						final String buyer_first_name = json_object_voucher_data_0.getString("BuyerFirstName");
+						final String buyer_last_name = json_object_voucher_data_0.getString("BuyerLastName");
+						final String option_title = json_object_voucher_data_0.getString("DealOptionTitle");
+						final String date_purchase = json_object_voucher_data_0.getString("DatePurchased");
+						final String date_redeemed = json_object_voucher_data_0.getString("DateRedeemed");
+						final String date_expireString = json_object_voucher_data_0.getString("DateExpires");
+						final String fine_print = json_object_voucher_data_0.getString("DealOptionFinePrint");
+						final String seller_name = json_object_voucher_data_0.getString("SellerName");
+						final double total_spent = json_object_voucher_data_0.getDouble("TotalSpent");
+						final String voucher_note = json_object_voucher_data_0.getString("VoucherNotes");
+
+						redeemed_address = json_object_voucher_data_0.getString("SellerAddressRedeemmed");
+						redeemed_address_id = json_object_voucher_data_0.getInt("SellerAddressIDRedeemed");
+
+						VoucherInfoView.this.runOnUiThread(new Runnable() {
+							public void run() {
+
+								if (!Double.toString(total_spent).equals(_nullTotalSpend)) {
+
+									try {
+										tv_voucher_total_spend.setText("$ " + df.format(total_spent));
+										sTotalSpend = df.format(total_spent);
+									} catch (Exception e) {
+										tv_voucher_total_spend.setText("$ " + Double.toString(total_spent));
+										sTotalSpend = Double.toString(total_spent);
+									}
+
+								} else {
+
+								}
+
+								if (!voucher_note.equals(_nullVoucherNote)) {
+									tv_voucher_note.setText(voucher_note);
+									sNote = voucher_note;
+
+								} else {
+
+								}
+
+								if (!redeemed_address.equals(_nullTotalSpend)) {
+									tv_voucher_redeem_address.setText(redeemed_address);
+
+								} else {
+
+								}
+
+								tv_voucher_status.setText(status);
+
+								if (status.equals(_voucherActive)) {
+									tv_voucher_status.setTextColor(0xff56B61D); // Green
+
+								} else if (status.equals(_voucherRedeemed)) {
+									if (!date_redeemed.equals(_nullTime)) {
+										tv_date_redeemed.setText(date_redeemed);
+										tv_date_redeemed.setVisibility(View.VISIBLE);
+										tv_date_redeemed_title.setVisibility(View.VISIBLE);
+										tv_date_redeemed.setTextColor(0xffD80A0A); // Red
+									} else {
+										tv_date_redeemed.setVisibility(View.INVISIBLE);
+										tv_date_redeemed_title.setVisibility(View.VISIBLE);
+									}
+									tv_voucher_status.setTextColor(0xffD80A0A); // Red
+									btn_redeem.setClickable(false);
+									btn_redeem.setTextColor(0xffAAACAC); // grey
+
+								} else {
+									tv_voucher_status.setTextColor(0xffD80A0A); // Red
+									btn_redeem.setClickable(false);
+									btn_redeem.setTextColor(0xffAAACAC); // grey
+								}
+
+								tv_voucher_buyer_name.setText(buyer_first_name + " " + buyer_last_name);
+
+								if (date_purchase.equals(_nullTime)) {
+									tv_date_purchased.setText("None");
+								} else {
+									tv_date_purchased.setText(date_purchase);
+								}
+
+								if (date_expireString.equals(_nullTime)) {
+									tv_date_expire.setText("None");
+								} else {
+									tv_date_expire.setText(date_expireString);
+								}
+
+								try {
+
+									tv_voucher_price.setText("$ " + df.format(price));
+									tv_voucher_value.setText("$ " + df.format(value));
+								} catch (Exception e) {
+									tv_voucher_price.setText("$ " + Double.toString(price));
+									tv_voucher_value.setText("$ " + Double.toString(value));
+								}
+
+								tv_option_title.setText(option_title);
+								tv_voucher_fine_print.setText(HtmlUtils.convertHtmltoString(fine_print));
+								tv_voucher_business_name.setText(seller_name);
+
+							}
+						});
+
+					} catch (Exception e) {
+
+					}
+				}
+			}.start();
+		} else {
+
+			tv_voucher_status.setVisibility(View.GONE);
+			tv_date_purchased.setVisibility(View.GONE);
+			tv_voucher_price.setVisibility(View.GONE);
+			tv_option_title.setVisibility(View.GONE);
+			showMessageBox("Voucher: " + sBarcode + " could not be found. Please, make sure you type the correct code and try again.");
+		}
+	}
+
+	/*
+	 * Read Voucher from Cache
+	 */
+	public byte[] readInternalStoragePrivate(String filename) {
+		int len = 1024 * 256;
+		byte[] buffer = new byte[len];
+		try {
+			FileInputStream fis = openFileInput(filename);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			int nrb = fis.read(buffer, 0, len);
+			while (nrb != -1) {
+				baos.write(buffer, 0, nrb);
+				nrb = fis.read(buffer, 0, len);
+			}
+			buffer = baos.toByteArray();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			Log.d(appContext.getString(R.string.app_name) + ".readInternalStorage()", "FileNotFoundException: " + e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			Log.d(appContext.getString(R.string.app_name) + ".readInternalStorage()", "IOException: " + e);
+			e.printStackTrace();
+		} catch (Exception e) {
+
+		}
+		return buffer;
+	}
+
+	/*
+	 * Read Voucher from SD Card
+	 */
+	public byte[] readExternallStoragePrivate(String filename) {
+		int len = 1024 * 256;
+		byte[] buffer = new byte[len];
+		if (!ExternalStorageUtils.isExternalStorageReadOnly()) {
+			try {
+				File file = new File(getExternalFilesDir("voucher"), filename);
+				FileInputStream fis = new FileInputStream(file);
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				int nrb = fis.read(buffer, 0, len);
+				while (nrb != -1) {
+					baos.write(buffer, 0, nrb);
+					nrb = fis.read(buffer, 0, len);
+				}
+				buffer = baos.toByteArray();
+				fis.close();
+			} catch (FileNotFoundException e) {
+				Log.d(appContext.getString(R.string.app_name) + ".readInternalStorage()", "FileNotFoundException: " + e);
+				e.printStackTrace();
+			} catch (IOException e) {
+				Log.d(appContext.getString(R.string.app_name) + ".readInternalStorage()", "IOException: " + e);
+				e.printStackTrace();
+			} catch (Exception e) {
+
+			}
+		}
+		return buffer;
+	}
+
+	/*
+	 * error message , back operation
+	 */
+	private void showMessageBox(String message) {
+		new AlertDialog.Builder(this).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent i = new Intent(VoucherInfoView.this, InputVoucherView.class);
+				startActivityForResult(i, Globals.INPUT_VOUCHER_VIEW);
+				finish();
+			}
+		}).setMessage(message).show();
+	}
+
+	/*
+	 * Get Voucher Data Task
+	 */
+	class getVoucherInfoViewTask extends AsyncTask<Void, Void, byte[]> {
+		public byte[] doInBackground(Void... params) {
+			byte[] buffer_c = null;
+			String username = ((User) getApplication()).loadusernameFrompreferences();
+			String password = ((User) getApplication()).loadpasswordFrompreferences();
+
+			try {
+				buffer_c = NetworkUtils.getVoucherInfo(username, password, sBarcode);
+
+			} catch (Exception e) {
+
+				showMessageBox(getString(R.string.net_connection_error));
+
+			}
+			return buffer_c;
+		}
+
+		@Override
+		public void onPreExecute() {
+
+			mypDialog.setMessage("Loading...");
+			mypDialog.show();
+		}
+
+		@Override
+		public void onPostExecute(byte[] buffer_b) {
+			mypDialog.dismiss();
+
+			if (buffer_b != null) {
+				try {
+
+					if (isGetVoucherSuccess(buffer_b)) {
+
+						saveVoucherInternal(buffer_b);
+						bVoucherData = buffer_b;
+						refreshVoucherData(sBarcode);
+						ll_page.setVisibility(View.VISIBLE);
+						ll_button.setVisibility(View.VISIBLE);
+					}
+				} catch (Exception e) {
+					showMessageBox(getString(R.string.net_connection_error));
+				}
+			} else {
+				showMessageBox(getString(R.string.net_time_out));
+			}
+		}
+	}
+
+	/*
+	 * Redeem Voucher Task
+	 */
+	class redeemVoucherInfoViewTask extends AsyncTask<Void, Void, byte[]> {
+		public byte[] doInBackground(Void... params) {
+			byte[] buffer_c = null;
+			String username = ((User) getApplication()).loadusernameFrompreferences();
+			String password = ((User) getApplication()).loadpasswordFrompreferences();
+
+			try {
+				buffer_c = NetworkUtils.redeemVoucher(username, password, sBarcode);
+
+			} catch (Exception e) {
+				showMessageBox(getString(R.string.net_connection_error));
+			}
+			return buffer_c;
+		}
+
+		@Override
+		public void onPreExecute() {
+			mypDialog.setMessage("Loading...");
+			mypDialog.show();
+		}
+
+		@Override
+		public void onPostExecute(byte[] buffer_b) {
+			mypDialog.dismiss();
+			if (buffer_b != null) {
+				try {
+					if (isRedeemVoucherSuccess(buffer_b)) {
+						saveVoucherExternal(bVoucherData);
+						ad_redeem_result.setMessage(sRedeemResult);
+						ad_redeem_result.create().show();
+
+					} else {
+
+					}
+
+				} catch (Exception e) {
+					showMessageBox(getString(R.string.net_connection_error));
+				}
+			} else {
+				showMessageBox(getString(R.string.net_time_out));
+			}
+		}
+	}
+
+	/*
+	 * AsyncTask, Save result to cache
+	 */
+	private void saveVoucherInternal(byte[] buffer_c) {
+		if (sBarcode.equals(_nullBarcode)) {
+
+		} else {
+			VoucherInfoUtils.writeInternalStoragePrivate(this, sBarcode, buffer_c);
+		}
+	}
+
+	/*
+	 * Save to SD card
+	 */
+	private void saveVoucherExternal(byte[] buffer_c) {
+		try {
+			VoucherInfoUtils.writeToExternalStoragePrivate(this, sBarcode, buffer_c);
+		} catch (Exception e) {
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// menu.add(0, MENU_LOGOUT, 0, "Logout").setIcon(android.R.drawable.ic_lock_power_off);
+		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+
+		case MENU_LOGOUT:
+			Intent i = new Intent(VoucherInfoView.this, LogoutView.class);
+			i.putExtra(LogoutView.KEY_LOGOUT_SELECTOR, Globals.VOUCHER_INFO_VIEW);
+			startActivityForResult(i, Globals.LOGOUT_VIEW);
+			finish();
+			break;
+
+		default:
+			break;
+		}
+		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		Intent i = new Intent(VoucherInfoView.this, InputVoucherView.class);
+		startActivityForResult(i, Globals.INPUT_VOUCHER_VIEW);
+		finish();
+	}
+}

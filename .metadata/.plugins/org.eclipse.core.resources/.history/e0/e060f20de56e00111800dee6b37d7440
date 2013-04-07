@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, DealsMagazineActivity!</string>
+    <string name="app_name">Deals Magazine Business</string>
+    <string name="error_barcode_null">Barcode error, Please Input Barcode again.</string>
+    <string name="enter_login">Please enter your Deals Magazine Business Account e-mail and password.</string>
+    <string name="logout_notice">You are currently logged into your account:</string>
+    <string name="msg_default_status">Turn device to landscape and place barcode inside viewfinder to read it.</string>
+    <string name="net_err">You must connect to a Wi-fi or cellular data network to access DealsMagazine.com. If you are connected to the Internet and still continue to see this error screen, please email business@DealsMagazine.com</string>
+    <string name="net_connection_error">Network connection error, please try again.</string>
+    <string name="net_time_out">Network connection time out, Please try again.</string>
+    <string name="no_internet">No Internet Connection.</string>
+    <string name="prefs_autosave_key">PrefsAutoSave</string>
+    <string name="prefs_autosave_password">PrefsAutoSavePassword</string>
+    <string name="prefs_scan_beep_key">PrefsBeep</string>
+    <string name="prefs_scan_vibrate_key">PrefsVibrate</string>
+    <string name="prefs_autodelete_key">PrefsAutoDelete</string>
+    <string name="redeem_confirm">Are you sure you want to redeem this voucher?</string>
+    <string name="sd_card_need">This function need SD Card, please check the SD Card.</string>
+    <string name="update_err">Update Data Fail.</string>
+    <string name="zxing">The Deals Magazine Business App for Android uses the ZXing barcode scanning library. ZXing is an open source library licensed under the Apache License v2.0.</string>
+    <string name="deals_magazine_address">Deals Magazine\n 1011 E Touhy Ave,\n Des Plaines, IL 60018</string>
+    
+    <string name="eula_title">Deals Magazine Business EULA</string>
+    <string name="eula_accept">Accept</string>
+    <string name="eula_refuse">Refuse</string>
+
+</resources>

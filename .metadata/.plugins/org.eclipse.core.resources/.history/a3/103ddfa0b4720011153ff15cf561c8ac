@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_a"
+        android:orientation="vertical"
+        android:paddingBottom="15dip" >
+
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginTop="3dip"
+            android:layout_marginBottom="3dip"
+            android:src="@drawable/logo_s" />
+
+        <EditText
+            android:id="@+id/edittext_username"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="3dip"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="E-mail"
+            android:inputType="text|textEmailAddress"
+            android:paddingTop="5.0dip"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/edittext_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="3dip"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Password"
+            android:password="true"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/white01_button"
+            android:layout_width="fill_parent"
+            android:layout_height="48dip"
+            android:layout_marginLeft="22dip"
+            android:layout_marginRight="22dip"
+            android:layout_marginTop="3dip"
+            android:shadowColor="@color/white20"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1.5"
+           
+            android:text="Login"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/loginRememberMeCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:text=""
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="140dip"
+            android:background="@drawable/bg_grey"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_login_help"
+                android:layout_width="80dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="60dip"
+                android:background="#00000000"
+                android:text="Help"
+                android:textColor="@color/blue"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_login_about"
+                android:layout_width="80dip"
+                android:layout_height="30dip"
+                android:background="#00000000"
+                android:text="About"
+                android:textColor="@color/blue"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

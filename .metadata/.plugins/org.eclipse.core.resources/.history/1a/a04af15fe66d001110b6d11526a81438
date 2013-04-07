@@ -1,0 +1,125 @@
+/*
+ * 
+ * © 2011 WhereYouShop.com  All Rights Reserved | http://www.whereyoushop.com 
+ * Emergency 24    | The WhereYouShop Team  
+ *
+ */
+
+package com.dealsmagazine.adapter;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.dealsmagazine.cache.DealsListViewCache;
+import com.whereyoushopbusiness.entity.Deal;
+
+/*
+ * ListView Deals Adapter
+ */
+public class DealsListArrayAdapter extends ArrayAdapter<Deal> {
+
+	private final Activity context;
+	private final ArrayList<Deal> deals;
+	private int resourceId;
+
+	String _dealOpen = new String("Open");
+	String _dealApproved = new String("Approved");
+
+	/*
+	 * Constructor
+	 * 
+	 * @param context - the application content
+	 * 
+	 * @param resourceId - the ID of the resource/view
+	 * 
+	 * @param deals - the bound ArrayList
+	 */
+	public DealsListArrayAdapter(Activity context, int resourceId, ArrayList<Deal> deals, ListView listView) {
+		super(context, resourceId, deals);
+		this.context = context;
+		this.deals = deals;
+		this.resourceId = resourceId;
+	}
+
+	/*
+	 * Updates the view
+	 * 
+	 * @param position - the ArrayList position to update
+	 * 
+	 * @param convertView - the view to update/inflate if needed
+	 * 
+	 * @param parent - the groups parent view
+	 */
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View rowView = convertView;
+		DealsListViewCache dealsListViewCache;
+
+		if (rowView == null) {
+			LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			rowView = vi.inflate(resourceId, null);
+			dealsListViewCache = new DealsListViewCache(rowView);
+			rowView.setTag(dealsListViewCache);
+
+		} else {
+			dealsListViewCache = (DealsListViewCache) rowView.getTag();
+		}
+
+		Deal deal = deals.get(position);
+
+		TextView idText = dealsListViewCache.getIdTextView();
+		idText.setText("ID:   " + deal.id);
+
+		TextView statusText = dealsListViewCache.getStatusTextView();
+		statusText.setText("Current Status:   " + deal.status);
+
+		if (deal.status.equals(_dealOpen)) {
+			statusText.setTextColor(0xff56B61D); // Green
+		} else if (deal.status.equals(_dealApproved)) {
+			statusText.setTextColor(0xff1875B5); // Blue
+		} else {
+			statusText.setTextColor(0xffD80A0A); // Red
+		}
+
+		TextView dealTypeText = dealsListViewCache.getDealTypeTextView();
+		dealTypeText.setText("Deal Type:   " + deal.dealtype);
+
+		TextView marketText = dealsListViewCache.getMarketTextView();
+		marketText.setText("Market:   " + deal.market);
+
+		TextView geoTargetingText = dealsListViewCache.getGeoTargetingTextView();
+		geoTargetingText.setText("Geo Targeting:   " + deal.geotargeting);
+
+		TextView categoryText = dealsListViewCache.getCategoryTextView();
+		categoryText.setText("Category:   " + deal.category);
+
+		TextView headlineText = dealsListViewCache.getDealHeadlineTextView();
+		headlineText.setText("Deal Headline:   " + deal.headline);
+
+		TextView emailSubjectText = dealsListViewCache.getEmailSubjecTextView();
+		emailSubjectText.setText("Email Subject:   " + deal.emailsubject);
+
+		TextView remainingQuantityText = dealsListViewCache.getRemainingQuantityTextView();
+		remainingQuantityText.setText("Remaining Quantity:   " + deal.remainingquantity);
+
+		TextView startDateText = dealsListViewCache.getStartDateTextView();
+		startDateText.setText("Start Date:   " + deal.startdate);
+
+		TextView endDateText = dealsListViewCache.getEndDateTextView();
+		endDateText.setText("End Date:   " + deal.enddate);
+
+		TextView dateExpText = dealsListViewCache.getDateExpTextView();
+		dateExpText.setText("Expiration Date:   " + deal.expdate);
+
+		return rowView;
+	}
+
+}

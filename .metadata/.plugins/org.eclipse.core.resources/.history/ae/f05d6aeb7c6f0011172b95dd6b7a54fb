@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (C) 2008 ZXing authors
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+<resources>
+  <color name="black">#000000</color>
+  <color name="black01">#353535</color>
+  <color name="black10">#222222</color>
+  
+  <color name="contents_text">#ff000000</color>
+  <color name="encode_view">#ffffffff</color>
+  <color name="help_button_view">#ffcccccc</color>
+  <color name="help_view">#ff404040</color>
+  <color name="possible_result_points">#c0ffff00</color>  
+  <color name="result_image_border">#ffffffff</color>
+  <color name="result_minor_text">#ffc0c0c0</color>
+  <color name="result_points">#c000ff00</color>
+  <color name="result_text">#ffffffff</color>
+  <color name="result_view">#b0000000</color>
+  <color name="sbc_header_text">#ff808080</color>
+  <color name="sbc_header_view">#ffffffff</color>
+  <color name="sbc_list_item">#fffff0e0</color>
+  <color name="sbc_layout_view">#ffffffff</color>
+  <color name="sbc_page_number_text">#ff000000</color>
+  <color name="sbc_snippet_text">#ff4b4b4b</color>
+  <color name="share_text">#ff000000</color>
+  <color name="share_view">#ffffffff</color>
+  <color name="status_view">#50000000</color>
+  <color name="status_text">#ffffffff</color>
+  <color name="transparent">#00000000</color>
+  <color name="viewfinder_frame">#ff000000</color>
+  <color name="viewfinder_laser">#ffff0000</color>
+  <color name="viewfinder_mask">#60000000</color>
+  
+  <color name="green01">#ff4c8313</color>
+	
+	<color name="blue">#61b7ff</color>
+	<color name="blue09">#ff0981be</color>
+	<color name="blue10">#ff101b36</color>
+	<color name="blue50">#ffb8dce5</color>
+	<color name="blue60">#ff5bc6e0</color>
+	<color name="blue70">#ff6acbe3</color>
+	<color name="blue75">#09869e</color>
+	<color name="blue80">#334666</color>
+	<color name="blue85">#04AEDA</color>
+	<color name="blue90">#3F6A8D</color>
+	
+	
+	<color name="fb_blue05">#ff536a99</color>
+	<color name="fb_blue06">#ff385182</color>
+	<color name="fb_blue07">#ff46649f</color>
+	<color name="fb_blue08">#ff6986be</color>
+	
+	<color name="grey10">#7E8491</color>
+	<color name="grey30">#ff3c451d</color>
+	<color name="grey50">#ff555555</color>
+	<color name="grey60">#ff757575</color>
+	<color name="grey70">#ff101b36</color>
+	<color name="grey80">#ffcccccc</color>
+	<color name="grey85">#ffeeeeee</color>
+	<color name="grey90">#fff5f5f5</color>
+	<color name="grey100">#5A5A5A</color>
+	<color name="grey110">#F4F4F4</color>
+	
+	<color name="darkgray">#ff999999</color>
+	<color name="lightgray">#ccccccff</color>
+	
+	<color name="orange50">#fff76500</color>
+	<color name="orange60">#ffffc384</color>
+	<color name="orange70">#ff8901</color>
+	<color name="orange80">#E69420</color>
+	<color name="orange90">#F37021</color>
+	
+	<color name="yellow50">#ffffd752</color>
+	<color name="yellow60">#ffef9a00</color>
+
+	<color name="white">#ffffffff</color>
+	<color name="white01">#ffF0F0F0</color>
+	<color name="white10">#D3D3D3</color>
+	<color name="white20">#DDDDDD</color>
+	
+	<color name="red">#ff0919</color>
+	
+	<color name="redeem">#4E83EF</color>
+	<color name="notredeem">#F9B646</color>
+  
+</resources>

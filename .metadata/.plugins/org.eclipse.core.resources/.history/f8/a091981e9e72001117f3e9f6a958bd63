@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_redeem_view_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_main_1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_a"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+         
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/login_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/logo_dm_b" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/imgbtn_ivv_input"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:layout_marginLeft="40dip"
+                android:background="@drawable/imgbtn_ivv_input" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_ivv_scan"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:layout_marginLeft="80dip"
+                android:background="@drawable/imgbtn_ivv_scan" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/widget35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dip"
+                android:shadowColor="@color/grey80"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1.5"
+                android:text="INPUT"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/widget36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dip"
+               android:shadowColor="@color/grey80"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1.5"
+                android:text="SCAN"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/imgbtn_ivv_history"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:layout_marginLeft="40dip"
+                android:background="@drawable/imgbtn_ivv_history" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_ivv_settings"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:layout_marginLeft="80dip"
+                android:background="@drawable/imgbtn_ivv_settings" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/widget35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:text="REDEEM HISTORY"
+                android:textColor="@color/black"
+                android:textSize="18sp" 
+                  android:shadowColor="@color/grey80"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1.5"/>
+
+            <TextView
+                android:id="@+id/widget36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dip"
+                android:text="SETTING"
+                android:textColor="@color/black"
+                android:textSize="18sp" 
+                  android:shadowColor="@color/grey80"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1.5"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

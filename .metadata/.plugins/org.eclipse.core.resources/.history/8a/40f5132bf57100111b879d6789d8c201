@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_voucherlist_view_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white20"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <LinearLayout
+        android:id="@+id/ll_voucherlist_view_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1" 
+        android:background="@color/black">
+
+        <TextView
+            android:id="@+id/tv_deal_list_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="0dip"
+            android:background="@drawable/bg_text_bar"
+            android:text="Business Name"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="@color/grey80" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:divider="#53728C"
+            android:dividerHeight="1dip"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none"
+            android:scrollingCache="false" />
+
+        <ViewStub
+            android:id="@android:id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout="@layout/empty_deals_view" />
+    </FrameLayout>
+
+</LinearLayout>

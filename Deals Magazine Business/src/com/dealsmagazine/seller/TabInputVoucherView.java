@@ -1,0 +1,134 @@
+/*
+ * 
+ * © 2011 WhereYouShop.com  All Rights Reserved | http://www.whereyoushop.com 
+ * Emergency 24    | The WhereYouShop Team  
+ *
+ */
+
+package com.dealsmagazine.seller;
+
+import com.dealsmagazine.barcode.CaptureActivity;
+import com.dealsmagazine.globals.Globals;
+import com.dealsmagazine.util.ExternalStorageUtils;
+import com.dealsmagazine.seller.R;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.InputType;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+public class TabInputVoucherView extends Activity {
+
+	final int MENU_LOGOUT = 1;
+	final int MENU_CANCEL = 2;
+
+	private ImageButton imgbtn_ivv_input_tab;
+	private ImageButton imgbtn_ivv_scan_tab;
+	private ImageButton imgbtn_ivv_history_tab;
+	private ImageButton imgbtn_ivv_settings_tab;
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.tab_input_voucher_view);
+
+		imgbtn_ivv_input_tab = (ImageButton) this.findViewById(R.id.imgbtn_ivv_input_tab);
+		imgbtn_ivv_scan_tab = (ImageButton) this.findViewById(R.id.imgbtn_ivv_scan_tab);
+		imgbtn_ivv_history_tab = (ImageButton) this.findViewById(R.id.imgbtn_ivv_history_tab);
+		imgbtn_ivv_settings_tab = (ImageButton) this.findViewById(R.id.imgbtn_ivv_settings_tab);
+
+		imgbtn_ivv_input_tab.setOnClickListener(new OnClickListener() {
+			public void onClick(View _v) {
+
+				LayoutInflater inflater = (LayoutInflater) TabInputVoucherView.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				final LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.input_voucher_view_input, null);
+				final EditText et_voucher = (EditText) layout.findViewById(R.id.et_ivv_input);
+				et_voucher.setInputType(InputType.TYPE_CLASS_PHONE);
+
+				new AlertDialog.Builder(TabInputVoucherView.this).setTitle("Voucher Code").setIcon(android.R.drawable.ic_dialog_info).setMessage("Enter Voucher Code Below").setView(layout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface dialog, int which) {
+						String voucher_codeString = et_voucher.getText().toString();
+
+						if (voucher_codeString == null || voucher_codeString.equals("")) {
+							Toast.makeText(getApplicationContext(), "Please Input Voucher Code", Toast.LENGTH_SHORT).show();
+
+						} else {
+							Intent i = new Intent(TabInputVoucherView.this, VoucherInfoView.class);
+							i.putExtra(VoucherInfoView.KEY_VOUCHER_CODE, et_voucher.getText().toString().trim());
+							startActivityForResult(i, Globals.VOUCHER_INFO_VIEW);
+							finish();
+						}
+					}
+				}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				}).show();
+			}
+		});
+
+		imgbtn_ivv_scan_tab.setOnClickListener(new OnClickListener() {
+			public void onClick(View _v) {
+				Intent i = new Intent(TabInputVoucherView.this, CaptureActivity.class);
+				startActivityForResult(i, Globals.CAPTURE_ACTIVITY);
+				finish();
+			}
+		});
+
+		imgbtn_ivv_history_tab.setOnClickListener(new OnClickListener() {
+			public void onClick(View _v) {
+
+				if (ExternalStorageUtils.isExternalStorageAvailable() && !ExternalStorageUtils.isExternalStorageReadOnly()) {
+					Intent i = new Intent(TabInputVoucherView.this, VoucherHistoryListView.class);
+					startActivityForResult(i, Globals.VOUCHER_HISTORY_VIEW);
+					finish();
+				} else {
+					showMessageBox(getString(R.string.sd_card_need));
+				}
+			}
+		});
+
+		imgbtn_ivv_settings_tab.setOnClickListener(new OnClickListener() {
+			public void onClick(View _v) {
+
+				Intent i = new Intent(TabInputVoucherView.this, AppPreferenceActivity.class);
+				startActivityForResult(i, Globals.APP_PREFERENCE_ACTIVITY);
+				finish();
+			}
+		});
+
+	}
+
+	/*
+	 * Alert
+	 */
+	private void showMessageBox(String message) {
+		new AlertDialog.Builder(this).setPositiveButton("OK", null).setMessage(message).show();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent();
+		intent.setClass(TabInputVoucherView.this, DealsMagazineBusinessActivity.class);
+		startActivity(intent);
+		finish();
+	}
+
+}

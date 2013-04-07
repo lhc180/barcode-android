@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.whereyoushopbusiness.android"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:name=".User"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        <activity
+            android:label="@string/app_name"
+            android:name=".WhereYouShopBusinessActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.WhereYouShopBusinessActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".InputVoucherView"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.InputVoucherView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".VoucherInfoView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.VoucherInfoView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".VoucherHistoryListView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.VoucherHistoryListView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".VoucherHistoryPageView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android..VoucherHistoryPageView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".VoucherEditView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.VoucherEditView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".LoginView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.LoginView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".LogoutView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.LogoutView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".SellerInfoView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.SellerInfoView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".ContactUsView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.ContactUsView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".AboutView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.AboutView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".DealsListView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.DealsListView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".NetworkConnectionView"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.android.NetworkConnectionView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name="com.whereyoushopbusiness.android.SplashScreenView"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden"
+            android:name="com.whereyoushopbusiness.barcode.CaptureActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter >
+                <action android:name="com.whereyoushopbusiness.barcode.com.whereyoushopbusiness.barcode.CaptureActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="Preferences"
+            android:name="AppPreferenceActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+</manifest>

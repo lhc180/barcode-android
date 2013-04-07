@@ -1,0 +1,131 @@
+/*
+ * 
+ * © 2011 WhereYouShop.com  All Rights Reserved | http://www.whereyoushop.com 
+ * Emergency 24    | The WhereYouShop Team  
+ *
+ */
+
+package com.dealsmagazine.cache;
+
+import com.whereyoushopbusiness.android.R;
+
+import android.view.View;
+import android.widget.TextView;
+
+public class DealsListViewCache {
+
+	private View v_baseview;
+	private TextView tv_id;
+	private TextView tv_status;
+	private TextView tv_deal_type;
+	private TextView tv_market;
+	private TextView tv_geo_targeting;;
+	private TextView tv_category;
+	private TextView tv_deal_headline;
+	private TextView tv_email_subject;
+	private TextView tv_start_date;
+	private TextView tv_end_date;
+	private TextView tv_remaining_quantity;
+	private TextView tv_date_exp;
+	
+	public DealsListViewCache(View v_baseview) {
+		this.v_baseview = v_baseview;
+	}
+
+	public TextView getStatusTextView() {
+		if (tv_status == null) {
+			tv_status = (TextView) v_baseview.findViewById(R.id.rowtext_status);			
+		}
+		return tv_status;
+	}
+
+	public TextView getDealHeadlineTextView() {
+		if (tv_deal_headline == null) {
+			tv_deal_headline = (TextView) v_baseview.findViewById(R.id.rowtext_deal_headline);
+		}
+		return tv_deal_headline;
+	}
+
+	public TextView getMarketTextView() {
+		if (tv_market == null) {
+			tv_market = (TextView) v_baseview.findViewById(R.id.rowtext_market);
+		}
+		return tv_market;
+	}
+	
+/*
+ *  Unused
+ */
+	public TextView getIdTextView() {
+		if (tv_id == null) {
+			tv_id = (TextView) v_baseview.findViewById(R.id.rowtext_id);
+			tv_id.setVisibility(View.GONE);
+		}
+		return tv_id;
+	}
+
+	public TextView getDealTypeTextView() {
+		if (tv_deal_type == null) {
+			tv_deal_type = (TextView) v_baseview.findViewById(R.id.rowtext_deal_type);
+			tv_deal_type.setVisibility(View.GONE);
+		}
+		return tv_deal_type;
+	}
+
+	public TextView getGeoTargetingTextView() {
+		if (tv_geo_targeting == null) {
+			tv_geo_targeting = (TextView) v_baseview.findViewById(R.id.rowtext_geo_targeting);
+			tv_geo_targeting.setVisibility(View.GONE);
+		}
+		return tv_geo_targeting;
+	}
+
+	public TextView getCategoryTextView() {
+		if (tv_category == null) {
+			tv_category = (TextView) v_baseview.findViewById(R.id.rowtext_category);
+			tv_category.setVisibility(View.GONE);
+		}
+		return tv_category;
+	}
+
+	public TextView getEmailSubjecTextView() {
+		if (tv_email_subject == null) {
+			tv_email_subject = (TextView) v_baseview.findViewById(R.id.rowtext_email_subject);
+			tv_email_subject.setVisibility(View.GONE);
+		}
+		return tv_email_subject;
+	}
+
+	public TextView getStartDateTextView() {
+		if (tv_start_date == null) {
+			tv_start_date = (TextView) v_baseview.findViewById(R.id.rowtext_start_date);
+			tv_start_date.setVisibility(View.GONE);
+		}
+		return tv_start_date;
+	}
+
+	public TextView getEndDateTextView() {
+		if (tv_end_date == null) {
+			tv_end_date = (TextView) v_baseview.findViewById(R.id.rowtext_end_date);
+			tv_end_date.setVisibility(View.GONE);
+		}
+		return tv_end_date;
+	}
+
+	public TextView getRemainingQuantityTextView() {
+		if (tv_remaining_quantity == null) {
+			tv_remaining_quantity = (TextView) v_baseview.findViewById(R.id.rowtext_remaining_quantity);
+			tv_remaining_quantity.setVisibility(View.GONE);
+		}
+		return tv_remaining_quantity;
+	}
+
+	public TextView getDateExpTextView() {
+		if (tv_date_exp == null) {
+			tv_date_exp = (TextView) v_baseview.findViewById(R.id.rowtext_date_exp);
+			tv_date_exp.setVisibility(View.GONE);
+		}
+		return tv_date_exp;
+	}
+
+}

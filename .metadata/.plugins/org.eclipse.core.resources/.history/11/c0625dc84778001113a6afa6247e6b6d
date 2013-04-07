@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_redeem_view_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <TextView
+        android:id="@+id/voucher_note_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="0dip"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:text="  NOTE"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="@color/grey80" />
+
+    <ScrollView
+        android:id="@+id/sv_redeem_view_1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_a"
+            android:orientation="vertical"
+            android:weightSum="1" >
+
+            <RelativeLayout
+                android:id="@+id/rl_voucherlist_view_1"
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:layout_marginTop="10dip" >
+
+                <TextView
+                    android:id="@+id/text_voucher_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="12dip"
+                    android:paddingTop="10.0dip"
+                    android:text="Total Spent:  $"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_voucher_total_spend"
+                    android:layout_width="160dip"
+                    android:layout_height="50dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/text_voucher_note"
+                    android:numeric="decimal"
+                    android:paddingTop="10.0dip"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_voucher_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dip"
+                android:paddingTop="10.0dip"
+                android:text=" Note:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_voucher_note"
+                android:layout_width="300dip"
+                android:layout_height="80dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.16"
+                android:background="@drawable/bg_white_input"
+                android:gravity="top"
+                android:paddingTop="10.0dip"
+                android:text=""
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text_voucher_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dip"
+                android:paddingTop="10.0dip"
+                android:text=" Voucher Redeemed Address:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_redeem_address"
+                android:layout_width="300dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="5dip" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_redeem_view_1"
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:background="@drawable/bg_grey"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="2.0dip"
+        android:paddingLeft="20.0dip"
+        android:paddingRight="20.0dip"
+        android:paddingTop="2.0dip" >
+
+        <Button
+            android:id="@+id/btn_voucher_edit_save"
+            style="@style/black_button"
+            android:layout_width="0.0dip"
+            android:layout_height="40dip"
+            android:layout_weight="1.0"
+            android:text="SAVE"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_voucher_edit_back"
+            style="@style/black_button"
+            android:layout_width="0.0dip"
+            android:layout_height="40dip"
+            android:layout_marginLeft="5dip"
+            android:layout_weight="1.0"
+            android:text="CANCEL"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

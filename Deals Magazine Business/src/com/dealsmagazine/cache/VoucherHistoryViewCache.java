@@ -1,0 +1,38 @@
+/*
+ * 
+ * © 2011 WhereYouShop.com  All Rights Reserved | http://www.whereyoushop.com 
+ * Emergency 24    | The WhereYouShop Team  
+ *
+ */
+
+package com.dealsmagazine.cache;
+
+import com.dealsmagazine.seller.R;
+
+import android.view.View;
+import android.widget.TextView;
+
+public class VoucherHistoryViewCache {
+
+	private View baseView;
+	private TextView tv_voucher_history_id;
+	private TextView tv_voucher_history_date;
+
+	public VoucherHistoryViewCache(View baseView) {
+		this.baseView = baseView;
+	}
+
+	public TextView getVoucherHistoryIdTextView() {
+		if (tv_voucher_history_id == null) {
+			tv_voucher_history_id = (TextView) baseView.findViewById(R.id.rowtext_voucher_history_id);
+		}
+		return tv_voucher_history_id;
+	}
+
+	public TextView getVoucherHistoryDateTextView() {
+		if (tv_voucher_history_date == null) {
+			tv_voucher_history_date = (TextView) baseView.findViewById(R.id.rowtext_voucher_history_date);
+		}
+		return tv_voucher_history_date;
+	}
+}

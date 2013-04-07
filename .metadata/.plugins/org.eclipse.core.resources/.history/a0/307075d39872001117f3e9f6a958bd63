@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_voucherlist_view_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_a"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <RelativeLayout
+        android:id="@+id/rl_deallist_view_1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_topbar"
+        android:paddingBottom="3dip"
+        android:paddingTop="3dip" >
+
+        <ImageView
+            android:id="@+id/img_whereyoushop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/top_logo_small" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_voucher_history_list_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/imgbtn_back" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_voucher_history_list_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/imgbtn_refresh" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_voucherlist_view_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/tv_voucher_record_count"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginLeft="0dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="0dip"
+            android:background="@drawable/voucherdetailtextbg"
+            android:text="Voucher_record_count"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:scrollingCache="false" />
+
+        <ViewStub
+            android:id="@android:id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout="@layout/empty_voucher_history_view" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_myaccount_view_1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/grey90"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <ScrollView
+        android:id="@+id/sv_myaccount_view_1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:id="@+id/ll_myaccount_view_2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/business_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:layout_marginTop="5dip"
+                android:text="Select Business:"
+                android:textColor="#464646"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/myspinner"
+                android:layout_width="300dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="2dip" />
+
+            <TextView
+                android:id="@+id/TestBar1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/bg_text_bar"
+                android:text="    Vouchers"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_bar"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@color/grey80" />
+
+            <RelativeLayout
+                android:id="@+id/rl_voucherlist_view_1"
+                android:layout_width="fill_parent"
+                android:layout_height="130dip"
+                android:layout_marginTop="10dip" >
+
+                <LinearLayout
+                    android:id="@+id/pie_chart"
+                    android:layout_width="130dip"
+                    android:layout_height="130dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dip"
+                    android:background="@color/white"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:id="@+id/not_redeem_color"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="3dip"
+                    android:layout_toRightOf="@+id/pie_chart"
+                    android:background="@color/notredeem"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/not_redeem_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="3dip"
+                    android:layout_toRightOf="@+id/not_redeem_color"
+                    android:text="Not Redeemed"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/redeem_color"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_below="@+id/not_redeem_color"
+                    android:layout_marginLeft="3dip"
+                    android:layout_marginTop="6dip"
+                    android:layout_toRightOf="@+id/pie_chart"
+                    android:background="@color/redeem"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/redeem_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/not_redeem_number"
+                    android:layout_marginLeft="3dip"
+                    android:layout_marginTop="10dip"
+                    android:layout_toRightOf="@+id/redeem_color"
+                    android:text="Redeemed"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/total_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/redeem_color"
+                    android:layout_marginLeft="3dip"
+                    android:layout_marginTop="10dip"
+                    android:layout_toRightOf="@+id/redeem_color"
+                    android:text="Total"
+                    android:textColor="@color/black" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/TestBar1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/bg_text_bar"
+                android:text="    Quick Stats"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_bar"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@color/grey80" />
+
+            <LinearLayout
+                android:id="@+id/ll_logout_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/bg_white"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/active_deals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Active Deals: "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/waiting_deals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Waiting Deals: "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/purchase_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Purchase Amount:"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/current_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Current Balance:"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/pending_earnings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Pending Earnings:"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/total_paid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Total Paid:"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/email_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Email Sent: "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/last_email_sent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Last Email Sent on: "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/last_payment_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Last Payment on: "
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/TestBar1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/bg_text_bar"
+                android:text="    My Deals"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_bar"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@color/grey80" />
+
+            <Button
+                android:id="@+id/btn_deal_view"
+                style="@style/deal_history_button"
+                android:layout_width="300dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="10dip"
+                android:layout_x="112px"
+                android:layout_y="34px"
+                android:text="Deals" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="0.0dip"
+        android:paddingLeft="25.0dip"
+        android:paddingRight="25.0dip"
+        android:paddingTop="1.0dip" >
+
+        <ImageButton
+            android:id="@+id/btn_seller_info_redeem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/imgbtn_seller_info_redeem" />
+    </LinearLayout>
+
+</LinearLayout>

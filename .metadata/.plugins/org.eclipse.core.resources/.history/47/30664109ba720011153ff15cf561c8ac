@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_list"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/rowtext_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:scrollbars="vertical"
+        android:text="status"
+        android:textColor="@color/grey70"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/rowtext_bar_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_marginBottom="1dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="1dip"
+        android:background="@color/white10"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/rowtext_deal_headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
+        android:text="headline"
+        android:textColor="@color/grey70"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/rowtext_bar_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="1dip"
+        android:background="@color/white10"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/rowtext_market"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_marginBottom="3dip"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:scrollbars="vertical"
+        android:text="market"
+        android:textColor="@color/grey70"
+        android:textSize="16sp" />
+
+</LinearLayout>

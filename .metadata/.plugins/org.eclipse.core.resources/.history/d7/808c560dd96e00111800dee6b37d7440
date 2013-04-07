@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:fadeScrollbars="false">
+
+    <LinearLayout
+        android:id="@+id/widget31"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/bg_list_item"
+        android:orientation="vertical" 
+       >
+
+        <TextView
+            android:id="@+id/rowtext_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="status"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_bar_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_marginBottom="1dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="1dip"
+            android:background="@color/white10"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/rowtext_deal_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="headline"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_bar_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_marginBottom="1dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="1dip"
+            android:background="@color/white10"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/rowtext_market"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="market"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="id"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_deal_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="deal type"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_geo_targeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="geo targeting"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="category"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_email_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="email"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="start date"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="end date"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_remaining_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="remaining quantity"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/rowtext_date_exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="date exp"
+            android:textColor="@color/grey70"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

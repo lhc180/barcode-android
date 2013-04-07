@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_a"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_dark" />
+
+            <LinearLayout
+                android:id="@+id/ll_myaccount_view_3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dip"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/widget32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dip"
+                    android:text="Deals Magazine Business App for Android"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/widget32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dip"
+                    android:text="Version 1.0.0"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/widget32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dip"
+                    android:text="© 2012 Deals Magazine.com All Rights Reserved"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginTop="20dip"
+                    android:text="@string/zxing"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dip"
+                    android:text="You can find more information about ZXing at:"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="180dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="5dp"
+                    android:autoLink="all"
+                    android:text="http://code.google.com/p/zxing"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

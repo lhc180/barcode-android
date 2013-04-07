@@ -1,0 +1,114 @@
+/*
+ * 
+ * © 2011 WhereYouShop.com  All Rights Reserved | http://www.whereyoushop.com 
+ * Emergency 24    | The WhereYouShop Team  
+ *
+ */
+
+package com.whereyoushopbusiness.android;
+
+import com.whereyoushopbusiness.android.R;
+import com.whereyoushopbusiness.globals.Globals;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+
+public class ContactUsView extends Activity {
+
+	private ImageButton imgbtn_contactview_call;
+	private ImageButton imgbtn_contactview_email;
+	private Button btn_contactview_back;
+
+	private int selector = 0;
+
+	public final static String KEY_CONTACT_US_SELECTOR = "CONTACT_US_SELECTOR";
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.contact_us_view);
+
+		try {
+			Bundle extras = getIntent().getExtras();
+			selector = extras.getInt(KEY_CONTACT_US_SELECTOR);
+
+		} catch (Exception e) {
+			selector = 0;
+		}
+
+		imgbtn_contactview_call = (ImageButton) this.findViewById(R.id.imgbtn_contactview_call);
+		imgbtn_contactview_email = (ImageButton) this.findViewById(R.id.imgbtn_contactview_email);
+		btn_contactview_back = (Button) this.findViewById(R.id.btn_contactview_back);
+
+		/*
+		 * Call Activity
+		 */
+		imgbtn_contactview_call.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "855-887-7467"));
+				ContactUsView.this.startActivity(intent);
+			}
+		});
+
+		/*
+		 * Email Activity
+		 */
+		imgbtn_contactview_email.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Uri uri = Uri.parse("mailto: Business@WhereYouShop.com");
+				Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+				ContactUsView.this.startActivity(intent);
+			}
+		});
+
+		btn_contactview_back.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if (selector == Globals.SELLER_INFO_VIEW) {
+					selector = 0;
+					Intent intent = new Intent();
+					intent.setClass(ContactUsView.this, SellerInfoView.class);
+					startActivity(intent);
+					finish();
+
+				} else if (selector == Globals.LOGIN_VIEW) {
+					selector = 0;
+					Intent intent = new Intent();
+					intent.setClass(ContactUsView.this, LoginView.class);
+					startActivity(intent);
+					finish();
+				}
+			}
+		});
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.app.Activity#onBackPressed()
+	 */
+	@Override
+	public void onBackPressed() {
+		if (selector == Globals.SELLER_INFO_VIEW) {
+			selector = 0;
+			Intent intent = new Intent();
+			intent.setClass(ContactUsView.this, SellerInfoView.class);
+			startActivity(intent);
+			finish();
+
+		} else if (selector == Globals.LOGIN_VIEW) {
+			selector = 0;
+			Intent intent = new Intent();
+			intent.setClass(ContactUsView.this, LoginView.class);
+			startActivity(intent);
+			finish();
+		}
+	}
+}

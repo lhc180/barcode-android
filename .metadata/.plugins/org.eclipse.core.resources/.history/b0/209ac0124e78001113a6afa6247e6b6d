@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/sv_redeem_view_1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg_a"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/ll_voucher_history_view_3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dip"
+                android:layout_marginTop="15dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="20dip"
+                    android:layout_marginTop="10dip"
+                    android:paddingTop="0.0dip"
+                    android:text="Redeemed Voucher Info"
+                    android:textColor="@color/grey180"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_voucher_history_page_code"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:background="@color/grey150"
+                    android:paddingLeft="20dip"
+                    android:paddingTop="5dip"
+                    android:text="Voucher #"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_voucher_history_view_3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dip"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dip"
+                    android:layout_marginRight="3dip"
+                    android:layout_marginTop="3dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="140dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dip"
+                        android:shadowColor="@color/white"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="1.5"
+                        android:text="Buyer Name:"
+                        android:textColor="@color/grey150"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_voucher_history_page_buyer_name"
+                        android:layout_width="150dip"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:shadowColor="@color/white"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="1.5"
+                        android:text="price"
+                        android:textColor="@color/blue110"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_voucher_history_page_date_redeemed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:paddingTop="3.0dip"
+                    android:text="Redeemed date"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/text_voucher_history_page_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:paddingTop="3.0dip"
+                    android:text="Deal Option Title"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/text_voucher_history_page_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:paddingTop="3.0dip"
+                    android:text="price"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/text_voucher_history_page_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:paddingTop="3.0dip"
+                    android:text="value"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/text_voucher_history_page_date_purchased"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:paddingTop="3.0dip"
+                    android:text="Purchased date"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/text_voucher_history_page_fine_print"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:autoLink="all"
+                    android:paddingTop="3.0dip"
+                    android:text="Fine_Print"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_voucher_history_page_1"
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:background="@drawable/bg_grey"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="2.0dip"
+        android:paddingLeft="12.0dip"
+        android:paddingRight="15.0dip"
+        android:paddingTop="2.0dip" >
+
+        <Button
+            android:id="@+id/btn_voucher_history_page_delete"
+            style="@style/black_button"
+            android:layout_width="0.0dip"
+            android:layout_height="40dip"
+            android:layout_weight="1.0"
+            android:text="DELETE"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_voucher_history_page_back"
+            style="@style/black_button"
+            android:layout_width="0.0dip"
+            android:layout_height="40dip"
+            android:layout_marginLeft="5dip"
+            android:layout_weight="1.0"
+            android:text="CANCEL"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
